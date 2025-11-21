@@ -1,0 +1,224 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 240 20% 99%;
+    --foreground: 240 10% 4%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 4%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 4%;
+
+    /* Google Blue as primary */
+    --primary: 217 89% 61%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Google Red as secondary */
+    --secondary: 4 90% 95%;
+    --secondary-foreground: 4 90% 58%;
+
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+
+    /* Google Red as accent */
+    --accent: 4 90% 58%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 4 90% 58%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 217 89% 61%;
+
+    --radius: 0.75rem;
+
+    /* Google brand gradient: Blue -> Red -> Yellow -> Green */
+    --gradient-primary: linear-gradient(135deg, hsl(217 89% 61%) 0%, hsl(4 90% 58%) 33%, hsl(45 100% 51%) 66%, hsl(134 61% 41%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(217 89% 98%) 100%);
+    --gradient-ai: linear-gradient(135deg, hsl(217 89% 61%) 0%, hsl(4 90% 58%) 25%, hsl(45 100% 51%) 50%, hsl(134 61% 41%) 75%, hsl(217 89% 61%) 100%);
+    --gradient-upload: linear-gradient(135deg, hsl(217 89% 95%) 0%, hsl(4 90% 95%) 33%, hsl(45 100% 95%) 66%, hsl(134 61% 95%) 100%);
+    --shadow-card: 0 4px 20px -4px hsl(217 89% 61% / 0.15);
+    --shadow-hover: 0 8px 30px -6px hsl(217 89% 61% / 0.25);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 217 89% 61%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217 89% 61%;
+  }
+
+  .dark {
+    --background: 240 10% 4%;
+    --foreground: 240 20% 99%;
+
+    --card: 240 8% 8%;
+    --card-foreground: 240 20% 99%;
+
+    --popover: 240 8% 8%;
+    --popover-foreground: 240 20% 99%;
+
+    /* Google Blue as primary (lighter for dark mode) */
+    --primary: 217 89% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Google Red as secondary */
+    --secondary: 4 90% 20%;
+    --secondary-foreground: 240 20% 99%;
+
+    --muted: 217 20% 15%;
+    --muted-foreground: 240 5% 65%;
+
+    /* Google Red as accent */
+    --accent: 4 90% 65%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 4 90% 50%;
+    --destructive-foreground: 240 20% 99%;
+
+    --border: 217 20% 20%;
+    --input: 217 20% 20%;
+    --ring: 217 89% 65%;
+
+    /* Google brand gradient for dark mode */
+    --gradient-primary: linear-gradient(135deg, hsl(217 89% 65%) 0%, hsl(4 90% 65%) 33%, hsl(45 100% 55%) 66%, hsl(134 61% 45%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(240 8% 8%) 0%, hsl(217 20% 12%) 100%);
+    --gradient-ai: linear-gradient(135deg, hsl(217 89% 65%) 0%, hsl(4 90% 65%) 25%, hsl(45 100% 55%) 50%, hsl(134 61% 45%) 75%, hsl(217 89% 65%) 100%);
+    --gradient-upload: linear-gradient(135deg, hsl(217 50% 15%) 0%, hsl(4 50% 15%) 33%, hsl(45 50% 15%) 66%, hsl(134 50% 15%) 100%);
+    --shadow-card: 0 4px 20px -4px hsl(217 89% 61% / 0.3);
+    --shadow-hover: 0 8px 30px -6px hsl(217 89% 61% / 0.4);
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 217 89% 61%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217 89% 61%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background-image: 
+      radial-gradient(at 0% 0%, hsl(217 89% 95% / 0.25) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, hsl(4 90% 95% / 0.25) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, hsl(45 100% 95% / 0.25) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsl(134 61% 95% / 0.25) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+@layer utilities {
+  .gradient-ai {
+    background: var(--gradient-ai);
+  }
+  
+  .gradient-upload {
+    background: var(--gradient-upload);
+  }
+  
+  .text-gradient {
+    color: hsl(217 89% 61%); /* Google Blue - solid color instead of gradient */
+  }
+  
+  .glow-effect {
+    box-shadow: 0 0 20px hsl(217 89% 61% / 0.4), 0 0 40px hsl(4 90% 58% / 0.2);
+  }
+  
+  .glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+  
+  @keyframes glow-pulse {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(217 89% 61% / 0.4), 0 0 40px hsl(4 90% 58% / 0.2);
+    }
+    50% {
+      box-shadow: 0 0 30px hsl(217 89% 61% / 0.6), 0 0 60px hsl(4 90% 58% / 0.4);
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-33.333%);
+    }
+  }
+
+  @keyframes gradient {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
+  }
+
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 3s ease infinite;
+  }
+
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(to right, hsl(217 89% 61% / 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(217 89% 61% / 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Hide scrollbar for marquee */
+  .animate-marquee {
+    will-change: transform;
+  }
+
+  /* Smooth transitions for all interactive elements */
+  button, a, .card {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+}
