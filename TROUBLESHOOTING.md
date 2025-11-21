@@ -130,3 +130,5 @@ Make sure:
 - [ ] Browser console shows specific error message
 - [ ] Full name and front image are provided
 
+
+

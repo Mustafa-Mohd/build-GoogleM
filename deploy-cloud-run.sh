@@ -110,3 +110,5 @@ echo -e "${GREEN}🔧 Update service:${NC}"
 echo "   gcloud run services update $SERVICE_NAME --region $REGION"
 echo ""
 
+
+
