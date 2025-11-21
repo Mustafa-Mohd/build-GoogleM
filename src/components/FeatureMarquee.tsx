@@ -7,7 +7,8 @@ import {
   FileSearch,
   Code,
   Zap,
-  Languages
+  Languages,
+  BookOpen
 } from "lucide-react";
 
 const features = [
@@ -19,6 +20,7 @@ const features = [
   { icon: Code, name: "Code Generator", description: "Generate code from descriptions" },
   { icon: Zap, name: "Quick Actions", description: "Improve and transform text" },
   { icon: Languages, name: "Translator", description: "Translate between 11 languages" },
+  { icon: BookOpen, name: "Flash Cards", description: "Create and study flash cards" },
 ];
 
 export function FeatureMarquee() {

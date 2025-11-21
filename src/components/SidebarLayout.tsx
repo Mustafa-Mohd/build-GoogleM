@@ -11,7 +11,8 @@ import {
   FileSearch,
   Code,
   Zap,
-  Languages
+  Languages,
+  BookOpen
 } from "lucide-react";
 import { 
   Sidebar, 
@@ -83,6 +84,12 @@ export function SidebarLayout({ children }: SidebarLayoutProps) {
       icon: Languages,
       url: "/translator",
       description: "Translate text with AI"
+    },
+    {
+      title: "Flash Cards",
+      icon: BookOpen,
+      url: "/flash-cards",
+      description: "Create and study flash cards"
     },
   ];
 

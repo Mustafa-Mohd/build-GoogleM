@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { CreditCard, LayoutDashboard, Upload, UserCircle, Shield, Menu } from "lucide-react";
+import { CreditCard, LayoutDashboard, Upload, UserCircle, Shield, Menu, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
@@ -14,9 +14,8 @@ export const Navbar = () => {
   const isActive = (path: string) => location.pathname === path;
 
   const navItems = [
-    { path: "/", label: "Dashboard", icon: LayoutDashboard },
-    { path: "/upload", label: "Upload Card", icon: Upload },
-    { path: "/admin", label: "Admin", icon: Shield },
+    { path: "/", label: "Home", icon: Home },
+    { path: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { path: "/profile", label: "Profile", icon: UserCircle },
   ];
 

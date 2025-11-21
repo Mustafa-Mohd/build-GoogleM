@@ -18,6 +18,7 @@ import TextSummarizer from "./pages/TextSummarizer";
 import CodeGenerator from "./pages/CodeGenerator";
 import QuickActions from "./pages/QuickActions";
 import Translator from "./pages/Translator";
+import FlashCards from "./pages/FlashCards";
 
 const queryClient = new QueryClient();
 
@@ -48,6 +49,7 @@ const App = () => (
           <Route path="/code-generator" element={<CodeGenerator />} />
           <Route path="/quick-actions" element={<QuickActions />} />
           <Route path="/translator" element={<Translator />} />
+          <Route path="/flash-cards" element={<FlashCards />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

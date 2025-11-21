@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { SidebarLayout } from "@/components/SidebarLayout";
+import { Navbar } from "@/components/Navbar";
 import { FeatureCard } from "@/components/FeatureCard";
 import { FeatureMarquee } from "@/components/FeatureMarquee";
 import { Button } from "@/components/ui/button";
@@ -15,7 +15,8 @@ import {
   Languages,
   Sparkles,
   ArrowRight,
-  CheckCircle2
+  CheckCircle2,
+  BookOpen
 } from "lucide-react";
 
 const features = [
@@ -75,6 +76,13 @@ const features = [
     url: "/translator",
     gradient: "bg-gradient-to-br from-cyan-500/10 to-blue-600/10",
   },
+  {
+    icon: BookOpen,
+    title: "Flash Cards",
+    description: "Create colorful flash cards from any topic or text. Study smarter with AI-generated questions and answers.",
+    url: "/flash-cards",
+    gradient: "bg-gradient-to-br from-violet-500/10 to-purple-600/10",
+  },
 ];
 
 const benefits = [
@@ -129,10 +137,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      <Navbar />
       {/* Hero Section */}
       <section 
         ref={heroRef}
-        className="relative overflow-hidden bg-gradient-to-b from-blue-50 via-white to-blue-50/30 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 py-20 sm:py-32"
+        className="relative overflow-hidden bg-gradient-to-b from-blue-50 via-white to-blue-50/30 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 py-16 sm:py-24 lg:py-32"
       >
         <div className="absolute inset-0 bg-grid-pattern opacity-5" />
         
@@ -142,20 +151,22 @@ export default function Home() {
         <div className="absolute top-40 right-20 w-64 h-64 bg-yellow-400/20 rounded-full filter blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className={`max-w-5xl mx-auto text-center transition-all duration-1000 ${visibleSections.has('hero') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className={`max-w-6xl mx-auto text-center transition-all duration-1000 ${visibleSections.has('hero') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-blue-500/10 to-red-500/10 border-2 border-blue-500/20 mb-8 shadow-lg backdrop-blur-sm">
               <Sparkles className="h-5 w-5 text-blue-600 dark:text-blue-400 animate-pulse" />
               <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">Powered by Google M</span>
             </div>
             
-            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold mb-8 bg-gradient-to-r from-blue-600 via-red-500 to-yellow-500 bg-clip-text text-transparent animate-gradient leading-tight">
-              Google M
-            </h1>
+            <div className="mb-8 px-4 overflow-visible">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-blue-600 via-red-500 to-yellow-500 bg-clip-text text-transparent animate-gradient break-words inline-block" style={{ lineHeight: '1.2', paddingBottom: '0.3em', paddingTop: '0.1em' }}>
+                Google M
+              </h1>
+            </div>
               
-              <p className="text-2xl sm:text-3xl font-semibold text-slate-800 dark:text-slate-200 mb-4 leading-relaxed">
+              <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-slate-800 dark:text-slate-200 mb-4 leading-relaxed px-4">
                 Your AI-Powered Productivity Suite
               </p>
-              <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-400 mb-12 max-w-3xl mx-auto">
+              <p className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-12 max-w-3xl mx-auto px-4">
                 Harness the power of Google M with 8 advanced features designed to transform your workflow
               </p>
 
@@ -172,13 +183,13 @@ export default function Home() {
                 ))}
               </div>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 px-4">
                 <Button
                   asChild
                   size="lg"
-                  className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-lg px-10 py-7 shadow-2xl hover:shadow-blue-500/50 transition-all transform hover:scale-105 rounded-xl font-semibold"
+                  className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7 shadow-2xl hover:shadow-blue-500/50 transition-all transform hover:scale-105 rounded-xl font-semibold w-full sm:w-auto"
                 >
-                  <Link to="/card-scanner" className="flex items-center">
+                  <Link to="/card-scanner" className="flex items-center justify-center">
                     Get Started Free
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
@@ -187,9 +198,9 @@ export default function Home() {
                   asChild
                   variant="outline"
                   size="lg"
-                  className="border-2 border-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950 text-blue-600 dark:text-blue-400 text-lg px-10 py-7 rounded-xl font-semibold hover:shadow-lg transition-all"
+                  className="border-2 border-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950 text-blue-600 dark:text-blue-400 text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7 rounded-xl font-semibold hover:shadow-lg transition-all w-full sm:w-auto"
                 >
-                  <Link to="/ai-chat">
+                  <Link to="/ai-chat" className="flex items-center justify-center">
                     Try AI Chat
                   </Link>
                 </Button>
@@ -201,22 +212,22 @@ export default function Home() {
         {/* Features Section */}
         <section 
           ref={featuresRef}
-          className="py-20 sm:py-32 bg-white dark:bg-slate-900"
+          className="py-16 sm:py-24 lg:py-32 bg-white dark:bg-slate-900"
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className={`text-center mb-20 transition-all duration-1000 ${visibleSections.has('features') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <div className="inline-block px-6 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-semibold mb-6">
+            <div className={`text-center mb-16 sm:mb-20 transition-all duration-1000 ${visibleSections.has('features') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              <div className="inline-block px-6 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-semibold mb-6 shadow-sm">
                 FEATURES
               </div>
-              <h2 className="text-5xl sm:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-red-600 bg-clip-text text-transparent">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-red-600 bg-clip-text text-transparent px-4">
                 Powerful AI Tools
               </h2>
-              <p className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed px-4">
                 Everything you need to boost productivity, streamline workflows, and unlock the power of Google M
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 px-4 sm:px-0">
               {features.map((feature, index) => (
                 <FeatureCard
                   key={feature.url}
@@ -244,25 +255,25 @@ export default function Home() {
         {/* Stats Section */}
         <section 
           ref={statsRef}
-          className="py-20 bg-gradient-to-b from-blue-50 via-red-50/30 to-yellow-50/30 dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 border-y border-blue-200 dark:border-slate-700"
+          className="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-blue-50 via-red-50/30 to-yellow-50/30 dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 border-y border-blue-200 dark:border-slate-700"
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className={`grid grid-cols-2 md:grid-cols-4 gap-6 transition-all duration-1000 ${visibleSections.has('stats') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <div className="text-center p-8 rounded-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-2 border-blue-200 dark:border-blue-800 hover:border-blue-500 hover:shadow-2xl transition-all hover:scale-105 transform">
-                <div className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent mb-3">8</div>
-                <div className="text-slate-600 dark:text-slate-400 font-semibold">AI Features</div>
+            <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 transition-all duration-1000 ${visibleSections.has('stats') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              <div className="text-center p-6 md:p-8 rounded-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-2 border-blue-200 dark:border-blue-800 hover:border-blue-500 hover:shadow-2xl transition-all hover:scale-105 transform">
+                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent mb-3">9</div>
+                <div className="text-sm md:text-base text-slate-600 dark:text-slate-400 font-semibold">AI Features</div>
               </div>
-              <div className="text-center p-8 rounded-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-2 border-red-200 dark:border-red-800 hover:border-red-500 hover:shadow-2xl transition-all hover:scale-105 transform">
-                <div className="text-5xl font-bold bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent mb-3">100%</div>
-                <div className="text-slate-600 dark:text-slate-400 font-semibold">AI Powered</div>
+              <div className="text-center p-6 md:p-8 rounded-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-2 border-red-200 dark:border-red-800 hover:border-red-500 hover:shadow-2xl transition-all hover:scale-105 transform">
+                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent mb-3">100%</div>
+                <div className="text-sm md:text-base text-slate-600 dark:text-slate-400 font-semibold">AI Powered</div>
               </div>
-              <div className="text-center p-8 rounded-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-2 border-yellow-200 dark:border-yellow-800 hover:border-yellow-500 hover:shadow-2xl transition-all hover:scale-105 transform">
-                <div className="text-5xl font-bold bg-gradient-to-r from-yellow-600 to-yellow-700 bg-clip-text text-transparent mb-3">11</div>
-                <div className="text-slate-600 dark:text-slate-400 font-semibold">Languages</div>
+              <div className="text-center p-6 md:p-8 rounded-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-2 border-yellow-200 dark:border-yellow-800 hover:border-yellow-500 hover:shadow-2xl transition-all hover:scale-105 transform">
+                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-yellow-600 to-yellow-700 bg-clip-text text-transparent mb-3">11</div>
+                <div className="text-sm md:text-base text-slate-600 dark:text-slate-400 font-semibold">Languages</div>
               </div>
-              <div className="text-center p-8 rounded-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-2 border-green-200 dark:border-green-800 hover:border-green-500 hover:shadow-2xl transition-all hover:scale-105 transform">
-                <div className="text-5xl font-bold bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent mb-3">∞</div>
-                <div className="text-slate-600 dark:text-slate-400 font-semibold">Possibilities</div>
+              <div className="text-center p-6 md:p-8 rounded-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border-2 border-green-200 dark:border-green-800 hover:border-green-500 hover:shadow-2xl transition-all hover:scale-105 transform">
+                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent mb-3">∞</div>
+                <div className="text-sm md:text-base text-slate-600 dark:text-slate-400 font-semibold">Possibilities</div>
               </div>
             </div>
           </div>
